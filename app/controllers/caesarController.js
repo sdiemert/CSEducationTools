@@ -1,6 +1,6 @@
-var mainApp = angular.module('mainApp', []); 
+var caesarController = angular.module('caesarController', []); 
 
-mainApp.controller('mainController', function($scope){
+caesarController.controller('caesarController', function($scope){
     $scope.alpha = "abcdefghijklmnopqrstuvwxyz"; 
     $scope.caesarOutputCipher = ""; 
     $scope.caesarOutputPlain = ""; 
