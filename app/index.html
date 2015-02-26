@@ -1,0 +1,77 @@
+<html ng-app='mainApp'>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../styles/bootstrap/css/bootstrap.css"/>
+        <script type="text/javascript" src="../scripts/angular.min.js"></script>
+        <script type="text/javascript" src="controllers.js"></script>
+    </head>
+    <body ng-controller="mainController">
+        <div class='navbar navbar-default'>
+            <div class='container'>
+                <div class='navbar-header'>
+                    <a href="" class='navbar-brand'>CodeMakers Tool Box</a>
+                </div>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-2 btn-group-vertical' role='group'>
+                    <button class='btn btn-default' type='button'>Ciphers</button>
+                    <button class='btn btn-default' type='button'>Click me</button>
+                    <button class='btn btn-default' type='button'>Click me</button>
+                    <button class='btn btn-default' type='button'>Click me</button>
+                </div>
+                <div class='col-md-10'>
+                    <!--encrypt-->
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <input ng-model="plainText" type="text" class="form-control" placeholder="Enter message to encrypt here...">
+                        </div>
+                        <div class="col-lg-1">
+                            <input ng-model="encryptKey" type="number" value="{{encryptKey}}" class="form-control" placeholder="key">
+                        </div>
+                        <div class="col-lg-1">
+                            <button class="btn btn-success pull-right" type="button" ng-click="encrypt(plainText)">Encrypt!</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    Cipher Text: 
+                                </span>
+                                <input readonly type="text" id="cipherTextOutput" class="form-control" value="{{caesarOutputCipher}}" placeholder="">
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <!--end encrypt-->
+                    <br><br>
+                    <!--decrypt-->
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <input ng-model="cipherText" type="text" class="form-control" placeholder="Enter message to decrypt here...">
+                        </div>
+                        <div class="col-lg-1">
+                            <input ng-model="decryptKey" type="number" value="{{decryptKey}}" class="form-control" placeholder="key">
+                        </div>
+                        <div class="col-lg-1">
+                            <button class="btn btn-danger pull-right" type="button" ng-click="decrypt(cipherText)">Decrypt!</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    Plain Text: 
+                                </span>
+                                <input readonly type="text" id="plainTextOutput" class="form-control" value="{{caesarOutputPlain}}" placeholder="">
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <!--decrypt-->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
