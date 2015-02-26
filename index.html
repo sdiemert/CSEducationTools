@@ -8,6 +8,7 @@
         <script type="text/javascript" src="app/app.js"></script>
         <script type="text/javascript" src="app/controllers.js"></script>
         <script type="text/javascript" src="app/controllers/caesarController.js"></script>
+        <script type="text/javascript" src="app/controllers/alphaController.js"></script>
         <script type="text/javascript" src="app/controllers/mainController.js"></script>
     </head>
 
@@ -22,10 +23,9 @@
         <div class='container'>
             <div class='row'>
                 <div class='col-md-2 btn-group-vertical' role='group'>
-                    <button class='btn btn-default' type='button'><a href="#caesarCipher">CaesarCipher</a></button>
-                    <button class='btn btn-default' type='button'>Click me</button>
-                    <button class='btn btn-default' type='button'>Click me</button>
-                    <button class='btn btn-default' type='button'>Click me</button>
+                    <a href="#caesarCipher"><button class='btn btn-default' type='button'>Caesar Cipher</button></a>
+                    <a href="#alphaCipher"><button class='btn btn-default' type='button'>Alpha Cipher</button></a>
+                    <a href="#vernamCipher"><button class='btn btn-default' type='button'>Vernam Cipher</button></a>
                 </div>
                 <div class='col-md-10' ng-view=''>
                     <!-- ANGULAR GENERATES FROM app/views/*.html -->
