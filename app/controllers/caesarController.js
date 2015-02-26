@@ -40,7 +40,7 @@ caesarController.controller('caesarController', function($scope){
                 tempText += $scope.alpha.charAt(($scope.alpha.indexOf(c.charAt(i))-k).mod(26)); 
             }   
             console.log("k: "+k+" temp:"+tempText+" c:"+c); 
-            $scope.solverOutputPlain += "key:"+k+" text: "+tempText+"\n"; 
+            $scope.solverOutputPlain += "key: "+k+"\ttext: "+tempText+"\n"; 
         }
     }; 
 }); 
