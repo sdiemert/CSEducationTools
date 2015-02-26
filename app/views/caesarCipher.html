@@ -49,4 +49,28 @@
     </div>
 </div>
 <!--decrypt-->
+<br>
+
+<h4>Cipher Solver</h4>
+
+<!--solver-->
+<div class="row">
+    <div class="col-lg-10">
+        <input ng-model="solveCipherText" type="text" class="form-control" placeholder="Enter message to decrypt here...">
+    </div>
+    <div class="col-lg-1">
+        <button class="btn btn-warning pull-right" type="button" ng-click="solve(solveCipherText)">Solve!</button>
+    </div>
+</div>
+<br>
+<div class='row'>
+    <div class="col-lg-12">
+        <div class="input-group">
+            <span class="input-group-addon">
+                Plain Text: 
+            </span>
+            <textarea rows="26" readonly type="text" id="plainTextOutput" class="form-control" value="{{solverOutputPlain}}" placeholder="">{{solverOutputPlain}}</textarea>
+        </div><!-- /input-group -->
+    </div>
+</div>
 
