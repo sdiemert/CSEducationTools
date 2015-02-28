@@ -10,6 +10,8 @@ mazeController.controller('mazeController', function($scope){
             [0,0,0,0,0,0]
     ]; 
 
+    $scope.currentLocation = {x:0, y:0}; 
+
     /*
     $scope.gridValues = [
             ['goal',0,0,0,0,0], 
@@ -52,8 +54,45 @@ mazeController.controller('mazeController', function($scope){
         }
     }; 
 
-    
+    $scope.generateBlocks = function(numBlocks){        
+        var e; 
+        var blockCount = 0;
+        var randNumX = 0; 
+        var randNumY = 0; 
+        while(blockCount < numBlocks){
+            randNumX = Math.floor(Math.random()*10);
+            randNumY = Math.floor(Math.random()*10);
+            if(randNumX < 6 && randNumY < 6 && $scope.gridValues[randNumX][randNumY] === 0){
+                $scope.gridValues[randNumX][randNumY] = 'block'; 
+                blockCount++; 
+            }
+        }
+    }
 
+    $scope.moveCurrentLocation = function(x, y){
+        if(x >= 6 || y >= 6){
+            console.log("Cannot move to index above 6. x,y:"+x+", "+y); 
+        }
+        if($scope.gridValues[$scope.currentLocation.x][$scope.currentLocation.y] === 'start'){
+        }else{
+            $scope.gridValues[$scope.currentLocation.x][$scope.currentLocation.y] = 'visited';
+        }
+        $scope.currentLocation = {x:x, y:y}; 
+        $scope.gridValues[$scope.currentLocation.x][$scope.currentLocation.y] = 'current';
+    }; 
+
+    $scope.setStart = function(x, y){
+        $scope.gridValues[x][y] = 'start'; 
+    }; 
+
+    $scope.setGoal = function(x, y){
+        $scope.gridValues[x][y] = 'goal'; 
+    }; 
+
+    //below this runs on page render. 
+    $scope.generateBlocks(2); 
+    $scope.setStart(0,0); 
+    $scope.setGoal(5,5); 
+    $scope.moveCurrentLocation(5,3); 
     $scope.renderGrid(); 
-
 }); 
