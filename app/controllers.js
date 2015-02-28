@@ -9,4 +9,5 @@ var controllers = angular.module('controllers', [
     'mainController', 
     'caesarController', 
     'alphaController', 
+    'mazeController'
 ]);

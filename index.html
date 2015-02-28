@@ -1,6 +1,7 @@
 <html ng-app='mainApp'>
     <head>
         <link rel="stylesheet" type="text/css" href="styles/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/style.css"/>
 
         <script type="text/javascript" src="scripts/angular.min.js"></script>
         <script type="text/javascript" src="scripts/angular-route.js"></script>
@@ -9,6 +10,7 @@
         <script type="text/javascript" src="app/controllers.js"></script>
         <script type="text/javascript" src="app/controllers/caesarController.js"></script>
         <script type="text/javascript" src="app/controllers/alphaController.js"></script>
+        <script type="text/javascript" src="app/controllers/mazeController.js"></script>
         <script type="text/javascript" src="app/controllers/mainController.js"></script>
     </head>
 
@@ -26,6 +28,7 @@
                     <a href="#caesarCipher"><button class='btn btn-default' type='button'>Caesar Cipher</button></a>
                     <a href="#alphaCipher"><button class='btn btn-default' type='button'>Alpha Cipher</button></a>
                     <a href="#vernamCipher"><button class='btn btn-default' type='button'>Vernam Cipher</button></a>
+                    <a href="#maze"><button class='btn btn-default' type='button'>Maze</button></a>
                 </div>
                 <div class='col-md-10' ng-view=''>
                     <!-- ANGULAR GENERATES FROM app/views/*.html -->

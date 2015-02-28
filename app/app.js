@@ -7,6 +7,9 @@ mainApp.config(function($routeProvider){
         ).when(
             '/alphaCipher',
             {controller:'alphaController', templateUrl:'app/views/alphaCipher.html'}
+        ).when(
+            '/maze',
+            {controller:'mazeController', templateUrl:'app/views/maze.html'}
         ).otherwise(
             {redirectTo: '/'}
         );
