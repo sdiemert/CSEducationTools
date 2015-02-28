@@ -2,4 +2,8 @@
     width:75px;
     height:75px;
     border:1px solid black; 
+    text-align:center;
+}
+.outer-cell{
+    border:none; 
 }
