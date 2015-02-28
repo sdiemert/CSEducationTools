@@ -7,3 +7,23 @@
 .outer-cell{
     border:none; 
 }
+
+.goal{
+    background-color:green; 
+}
+
+.start{
+    background-color:red; 
+}
+
+.block{
+    background-color:black; 
+}
+
+.visited{
+    background-color:#66CCFF; 
+}
+
+.current{
+    background-color:blue; 
+}
