@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			var rowCount = 1; 
+			function addNewRow(){
+				rowCount++; 
+				var s = "<tr>";
+				s+= "<td id='attr-"+rowCount+"-1-data'><input type='text'/></td>"
+				s+= "<td id='attr-"+rowCount+"-2-data'><input type='text'/></td>"
+				s+= "<td id='attr-"+rowCount+"-3-data'><input type='text'/></td>"
+				s+= "</tr>";
+				$("#input-table").append(s);
+			}
+
+			function submit(){
+				for(var i = 1; i <= rowCount; i++){
+					var d1 = $("#attr-"+i+"-1-data input").val();
+					var d2 = $("#attr-"+i+"-2-data input").val();
+					var d3 = $("#attr-"+i+"-3-data input").val();
+					console.log(d1); 
+					console.log(d2); 
+					console.log(d3); 
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class='row' style="height:20%;"></div>
+			<div class="row">
+				<div class='col-sm-2'></div>
+				<div class='col-sm-8'>
+					<form id="input-form" action="submit();">
+						<div class="input-group input-group-lg">
+						  	<span class="input-group-addon" id="sizing-addon1">Code</span>
+							<input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" id="code">
+						</div>
+
+						<table class='table'>
+							<tr>
+							   	<th><h4 id="attr-1">ATTR 1</h4></th>
+							   	<th><h4 id="attr-2">ATTR 1</h4></th>
+							   	<th><h4 id="attr-3">ATTR 1</h4></th>
+							</tr>
+							<tbody id="input-table">
+								<tr>
+									<td id='attr-1-1-data'><input type='text'/></td>
+									<td id='attr-1-2-data'><input type='text'/></td>
+									<td id='attr-1-3-data'><input type='text'/></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div class='col-sm-2'>
+				</div>
+			</div>		
+			<div class='row' style="">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-7">
+					<button class="btn btn-warning" onclick="addNewRow();">New Data</button>
+				</div>
+				<div class="col-sm-2">
+					<button class='btn btn-success' onclick="submit();">Submit</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
