@@ -87,14 +87,15 @@ app.get("/data/:id", function(req, res){
 app.post("/data/:id", function(req, res){
 	//the id field is in the params.
 	console.log("POST: /data/%s", req.params.id); 
-	/*
+
 	console.log("params: "); 
 	console.log(req.params); 
 	console.log("query: "); 
 	console.log(req.query); 
 	console.log("header: "); 
 	console.log(req.headers); 
-	*/
+	console.log("body:");
+	console.log(req.body); 
 
 	db.tuples.insert(
 		{

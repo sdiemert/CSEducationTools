@@ -20,9 +20,16 @@
 					var d1 = $("#attr-"+i+"-1-data input").val();
 					var d2 = $("#attr-"+i+"-2-data input").val();
 					var d3 = $("#attr-"+i+"-3-data input").val();
+
 					console.log(d1); 
 					console.log(d2); 
 					console.log(d3); 
+
+					var xmlhttp = new XMLHttpRequest();
+
+					xmlhttp.open("POST","http://127.0.0.1:3000/data/someId?attr1="+d1+"&attr2="+d2+"&attr3="+d3,true);
+					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlhttp.send();
 				}
 			}
 		</script>
