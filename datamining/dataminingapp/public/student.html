@@ -26,10 +26,11 @@
 					console.log(d1); 
 					console.log(d2); 
 					console.log(d3); 
+					console.log(code); 
 					console.log(clas); 
 
 
-					if(code && d1 && d2 && d3){
+					if(code && d1 && d2 && d3 && clas){
 						var xmlhttp = new XMLHttpRequest();
 						xmlhttp.open("POST","http://127.0.0.1:3000/data/"+code+"?attr1="+d1+"&attr2="+d2+"&attr3="+d3+"&class="	+clas,true);
 						xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
