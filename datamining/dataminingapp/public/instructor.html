@@ -8,6 +8,21 @@
 
 			function submitClassifier(){
 
+				//get the input 
+				var className = $("#code").val(); 
+
+				if(className){
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.open("POST","http://127.0.0.1:3000/classifier/"+className);
+					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlhttp.send();
+				}else{
+
+				}
+
+				console.log(className); 
+
+
 			}
 
 		</script>
@@ -42,7 +57,7 @@
 						  	<span class="input-group-addon" id="sizing-addon1">Code</span>
 							<input type="text" class="form-control" placeholder="myClassifier" aria-describedby="sizing-addon1" id="code">
 							<span class="input-group-btn">
-						        <button class="btn btn-success" type="button">Go!</button>
+						        <button class="btn btn-success" onclick="submitClassifier();" type="button">Go!</button>
 						    </span>
 						</div>
 					</form>

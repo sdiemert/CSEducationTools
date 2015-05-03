@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+		<!-- Script that does the data mining -->
+		<script src="js/minedata.js"></script>
+
+		<script type="text/javascript">
+			function getData(){
+				var code = $("#code").val(); 	
+
+				if(code){
+					loadData(code); 
+				}
+			}
+
+			function runClassifier(){
+
+				var v1 = $("#val1").val(); 
+				var v2 = $("#val2").val(); 
+				var v3 = $("#val3").val(); 
+
+				var result = null; 
+
+				console.log(v1, v2, v3); 
+				if(v1 && v2 && v3){
+					result = mineData(v1, v2, v3); 
+				}
+
+			}
+		</script>
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="row" style="height:35%;">
+			</div>
+			<div class='row' style="">
+				<div class='col-sm-3'></div>
+				<div class="center-block col-sm-6">
+					<form id="input-form">
+						<div class="input-group input-group-lg">
+						  	<span class="input-group-addon" id="sizing-addon1">Code</span>
+							<input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" id="code">
+							<span class="input-group-btn">
+						        <button class="btn btn-success" onclick="getData();" type="button">Go!</button>
+						    </span>
+						</div>
+					</form>
+				</div>
+				<div class='col-sm-3'></div>
+			</div>	
+			<div class='row'>
+				<div class='col-sm-2'></div>
+				<div class='col-sm-8'>
+					<form id="">
+						<table class='table'>
+							<tr>
+							   	<th><h4 id="">Item 1</h4></th>
+							   	<th><h4 id="">Item 2</h4></th>
+							   	<th><h4 id="">Item 3</h4></th>
+							</tr>
+							<tbody id="input-table">
+								<tr id="input-row-1">
+									<td ><input id='val1' type='text'/></td>
+									<td ><input id='val2' type='text'/></td>
+									<td ><input id='val3' type='text'/></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<button class='btn btn-success' onclick="runClassifier();">Mine</button>
+				</div>
+				<div class='col-sm-2'></div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-2'></div>
+				<div class='col-sm-8'>
+					<table class='table'>
+						<tr>
+						   	<th><h4 id="attr-1">Item 1</h4></th>
+						   	<th><h4 id="attr-2">Item 2</h4></th>
+						   	<th><h4 id="attr-3">Item 3</h4></th>
+						   	<th><h4 id="class">Class</h4></th>
+						</tr>
+						<tbody id='data-table'></tbody> <!--this element gets populated by js/minedata.js -->
+					</table>
+				</div>
+				<div class='col-sm-2'></div>
+			</div>
+		</div>
+	</body>
+</html>
