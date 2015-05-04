@@ -15,12 +15,15 @@
 				var code = $("#code").val(); 	
 
 				if(code){
+
+					$("#invalid-code-message").hide();
+			        $("#classifier-wrapper").hide();
+			        $("#data-wrapper").hide();
+
+			        $("#bumper").css("height", "35%");
+
 					loadData(code); 
 
-					$("#classifier-wrapper").show();
-					$("#data-wrapper").show();
-
-					$("#bumper").css("height", "15%");
 				}
 			}
 
@@ -57,14 +60,72 @@
 						$("#result").val(result[0][maxIndex].name); 
 						$("#result").show(); 
 						$("#stats-button-wrapper").show(); 
+						$("#stats-button").click(showStats);
+
+						$("#val1").change(setupReClassify);
+						$("#val2").change(setupReClassify);
+						$("#val3").change(setupReClassify);
 					}
+
+					genStats(result[0], result[1]);
 				}
 
 			}
 
-			function showStats(){
+			function setupReClassify(){
+
+				$("#classify-button-cell").show();
+				$("#result").hide();
+				$("#stats-panel").hide(); 
+				$("#stats-button-wrapper").hide(); 
+
 
 			}
+
+			function genStats(classes, inputs){
+
+				var s = ""; 
+
+				for(var i = 0; i < classes.length; i++){
+					s += "<tr>"; 
+					s += "<td>P(class='"+classes[i].name+"')</td>"
+					s += "<td>"+Math.round(classes[i].pc * 100)/100+"</td>"
+					s += '</tr>';
+				}
+
+				for( var i = 0; i < inputs.length; i++){
+
+					for(var j = 0; j < classes.length; j++){
+						s += "<tr>"; 
+						s += "<td>P( item_"+(i+1)+" = '"+inputs[i].value+"' | class='"+classes[j].name+"')</td>"
+						s += "<td>"+Math.round(inputs[i].givens[classes[j].name] * 100)/100+"</td>"
+						s += '</tr>';
+					}
+				}
+
+				for(var i = 0; i < classes.length; i++){
+					s += "<tr>"; 
+					s += "<td><b>P(class='"+classes[i].name+"' | item_1 = '"+inputs[0].value+"', item_2 = '"+inputs[1].value+"', item_3 = '"+inputs[2].value+"')</b></td>"
+					s += "<td><b>"+Math.round(classes[i].total * 100)/100+"</b></td>"
+					s += '</tr>';
+				}
+
+				$("#stats-table").empty(); 
+				$("#stats-table").append(s); 
+			}
+
+			function showStats(){
+				$('#stats-panel').show();
+				$("#stats-button").text("Hide Stats");
+				$("#stats-button").click(hideStats);
+			}
+
+			function hideStats(){
+				$('#stats-panel').hide();
+				$("#stats-button").text("Show Stats");
+				$("#stats-button").click(showStats);
+			}
+
 		</script>
 
 	</head>
@@ -87,9 +148,24 @@
 				</div>
 				<div class='col-sm-3'></div>
 			</div>	
+
+			<div class='row' style="">
+				<div class='col-sm-3'></div>
+				<div class="center-block col-sm-6">
+					<div id='invalid-code-message' class="alert alert-danger" role="alert" hidden>
+						<p>Opps! We couldn't find that code in the database. Please try a different code. </p>	
+					</div>
+				</div>
+				<div class='col-sm-3'></div>
+			</div>	
+				
+
 			<div class='row' id="classifier-wrapper" hidden>
 				<div class='col-sm-2'></div>
 				<div class='col-sm-8'>
+
+
+
 					<h3> Classify A New Tuple</h3>
 					<!--<form id="">-->
 						<table class='table'>
@@ -98,6 +174,7 @@
 							   	<th><h4 id="">Item 2</h4></th>
 							   	<th><h4 id="">Item 3</h4></th>
 							   	<th><h4 id="result-title">Predicted</h4></th>
+							   	<th><h4 id=""></h4></th>
 							</tr>
 							<tbody id="input-table">
 								<tr id="input-row-1">
@@ -106,7 +183,7 @@
 									<td ><input id='val3' type='text'size='10'/></td>
 									<td id="classify-button-cell"><button id="classify-button" class='btn btn-warning' onclick="runClassifier();">Classify</button></td>
 									<td><input id='result' disabled value="" hidden size="12"/></td>
-									<td id="stats-button-wrapper" hidden><button id="stats-button" class='btn' onclick="$('#stats-panel').show();">See Stats</button></td>
+									<td id="stats-button-wrapper" hidden><button id="stats-button" class='btn'>See Stats</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -115,7 +192,12 @@
 		
 					<div hidden id='stats-panel' class="panel panel-default">
 					  <div class="panel-body">
-					    Basic panel example
+					  	<h4>Naive Bayes Classifier Statistics</h4>
+					  	<p>The following is the break down of the values calculated by the classifier: </p> 
+						<table class='table'>
+							<tbody id='stats-table'>
+							</tbody>
+						</table>
 					  </div>
 					</div>
 				</div>

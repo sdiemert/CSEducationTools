@@ -16,14 +16,20 @@
 					xmlhttp.open("POST","http://127.0.0.1:3000/classifier/"+className);
 					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					xmlhttp.send();
+					$("#success").show();
+					$("#danger").hide();
 				}else{
-
+					$("#danger").show();
+					$("#success").hide();
 				}
 
 				console.log(className); 
 
 
 			}
+
+			$("#danger").hide();
+			$("#success").hide();
 
 		</script>
 	</head>
@@ -38,7 +44,7 @@
 						Enter a code to identify the classifier that your group is creating. 
 					</p>
 					<p>
-						Save this code and make sure you students enter it when prompted.
+						Save this code and make sure your students enter it when prompted.
 					</p>
 					<p>
 						Use this code to identify the classifier while testing the classifier as well. 
@@ -69,10 +75,10 @@
 				<div class='col-sm-3'>
 				</div>
 				<div class='col-sm-6'>
-					<div id="success" class="alert alert-success" role="alert">
-						  Data was sent to the server!
+					<div id="success" class="alert alert-success" role="alert" hidden>
+						  Code Sent To Server!
 					</div>
-					<div id="danger" class="alert alert-danger" role="alert">
+					<div id="danger" class="alert alert-danger" role="alert" hidden>
 						Please fill out the code and attributes fields
 					</div>
 				</div>

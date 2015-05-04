@@ -173,16 +173,30 @@ function renderData(data){
 
     console.log(data); 
 
-    for(var i = 0; i < data.length; i++){
+    if(data.length <= 0){
 
-        s = ""; 
-        s += "<tr>"; 
-        s += "<td ><input value='"+data[i].data.attr1+"' readonly='true'/></td>"; 
-        s += "<td ><input value='"+data[i].data.attr2+"' readonly='true'/></td>"; 
-        s += "<td ><input value='"+data[i].data.attr3+"' readonly='true'/></td>"; 
-        s += "<td ><input value='"+data[i].data['class']+"' readonly='true'/></td>"; 
-        s += "</tr>"; 
+        console.log("INVALID CODE");
 
-        elem.append(s); 
+        $("#invalid-code-message").show();
+
+    }else{
+        for(var i = 0; i < data.length; i++){
+
+            s = ""; 
+            s += "<tr>"; 
+            s += "<td ><input disabled='disabled' value='"+data[i].data.attr1+"' readonly='true'/></td>"; 
+            s += "<td ><input disabled='disabled' value='"+data[i].data.attr2+"' readonly='true'/></td>"; 
+            s += "<td ><input disabled='disabled' value='"+data[i].data.attr3+"' readonly='true'/></td>"; 
+            s += "<td ><input disabled='disabled' value='"+data[i].data['class']+"' readonly='true'/></td>"; 
+            s += "</tr>"; 
+
+            elem.append(s); 
+        }
+
+
+        $("#classifier-wrapper").show();
+        $("#data-wrapper").show();
+
+        $("#bumper").css("height", "15%");
     }
 }
