@@ -154,7 +154,8 @@ function mineData(val1, val2, val3){
     console.log(JSON.stringify(classes));
 
 
-    return classes;
+
+    return [classes, inputs];
 }
 
 /*

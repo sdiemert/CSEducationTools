@@ -8,11 +8,19 @@
 		<script src="js/minedata.js"></script>
 
 		<script type="text/javascript">
+
+			classCount = 1; 
+
 			function getData(){
 				var code = $("#code").val(); 	
 
 				if(code){
 					loadData(code); 
+
+					$("#classifier-wrapper").show();
+					$("#data-wrapper").show();
+
+					$("#bumper").css("height", "15%");
 				}
 			}
 
@@ -29,13 +37,40 @@
 					result = mineData(v1, v2, v3); 
 				}
 
+				if(result){
+					var max = Number.MIN_VALUE; 
+					var maxIndex = -1; 	
+
+					for(var i = 0; i < result[0].length; i++){
+
+						if( result[0][i].total >= max ){
+
+							maxIndex = i; 	
+							max = result[0][i].total; 
+
+						}
+					}	
+
+					if(maxIndex != -1){
+
+						$("#classify-button-cell").hide(); 
+						$("#result").val(result[0][maxIndex].name); 
+						$("#result").show(); 
+						$("#stats-button-wrapper").show(); 
+					}
+				}
+
+			}
+
+			function showStats(){
+
 			}
 		</script>
 
 	</head>
 	<body>
 		<div class="container">
-			<div class="row" style="height:35%;">
+			<div class="row" id="bumper" style="height:35%;">
 			</div>
 			<div class='row' style="">
 				<div class='col-sm-3'></div>
@@ -45,39 +80,54 @@
 						  	<span class="input-group-addon" id="sizing-addon1">Code</span>
 							<input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" id="code">
 							<span class="input-group-btn">
-						        <button class="btn btn-success" onclick="getData();" type="button">Go!</button>
+						        <button class="btn btn-success" onclick="getData();" type="button">Load Data</button>
 						    </span>
 						</div>
 					</form>
 				</div>
 				<div class='col-sm-3'></div>
 			</div>	
-			<div class='row'>
+			<div class='row' id="classifier-wrapper" hidden>
 				<div class='col-sm-2'></div>
 				<div class='col-sm-8'>
-					<form id="">
+					<h3> Classify A New Tuple</h3>
+					<!--<form id="">-->
 						<table class='table'>
 							<tr>
 							   	<th><h4 id="">Item 1</h4></th>
 							   	<th><h4 id="">Item 2</h4></th>
 							   	<th><h4 id="">Item 3</h4></th>
+							   	<th><h4 id="result-title">Predicted</h4></th>
 							</tr>
 							<tbody id="input-table">
 								<tr id="input-row-1">
-									<td ><input id='val1' type='text'/></td>
-									<td ><input id='val2' type='text'/></td>
-									<td ><input id='val3' type='text'/></td>
+									<td ><input id='val1' type='text' size='10'/></td>
+									<td ><input id='val2' type='text'size='10'/></td>
+									<td ><input id='val3' type='text'size='10'/></td>
+									<td id="classify-button-cell"><button id="classify-button" class='btn btn-warning' onclick="runClassifier();">Classify</button></td>
+									<td><input id='result' disabled value="" hidden size="12"/></td>
+									<td id="stats-button-wrapper" hidden><button id="stats-button" class='btn' onclick="$('#stats-panel').show();">See Stats</button></td>
 								</tr>
 							</tbody>
 						</table>
-					</form>
-					<button class='btn btn-success' onclick="runClassifier();">Mine</button>
+					<!--</form>-->
+					
+		
+					<div hidden id='stats-panel' class="panel panel-default">
+					  <div class="panel-body">
+					    Basic panel example
+					  </div>
+					</div>
 				</div>
 				<div class='col-sm-2'></div>
 			</div>
-			<div class='row'>
+
+			<div class='row' id='data-wrapper' hidden>
 				<div class='col-sm-2'></div>
 				<div class='col-sm-8'>
+
+					<h3>Data Set:</h3>
+
 					<table class='table'>
 						<tr>
 						   	<th><h4 id="attr-1">Item 1</h4></th>
