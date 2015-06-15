@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express(); 
 var async = require("async"); 
-var db = require("mongojs").connect("mongodb://localhost/datamining", ["tuples", "classifier"]);
+var db = require("mongojs")("mongodb://localhost/datamining", ["tuples", "classifier"]);
 
 console.log("Starting...");
 
@@ -117,7 +117,7 @@ app.post("/data/:id", function(req, res){
 	);
 }); 
 
-var server = app.listen(3000, function(){
+var server = app.listen(3000, '0.0.0.0', function(){
 	var host = server.address().address; 
 	var port = server.address().port; 
 	console.log("App running at: http://%s:%s", host, port); 

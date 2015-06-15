@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="app.js"></script>
 
 		<script type="text/javascript">
 
@@ -13,9 +14,10 @@
 
 				if(className){
 					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.open("POST","http://127.0.0.1:3000/classifier/"+className);
+					xmlhttp.open("POST","http://"+hostname+"/classifier/"+className);
 					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					xmlhttp.send();
+                    
 					$("#success").show();
 					$("#danger").hide();
 				}else{

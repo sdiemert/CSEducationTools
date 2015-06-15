@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="app.js"></script>
 		<script type="text/javascript">
 			var rowCount = 1; 
 			function addNewRow(){
@@ -35,7 +36,7 @@
 
 					if(code && d1 && d2 && d3 && clas){
 						var xmlhttp = new XMLHttpRequest();
-						xmlhttp.open("POST","http://127.0.0.1:3000/data/"+code+"?attr1="+d1+"&attr2="+d2+"&attr3="+d3+"&class="	+clas,true);
+						xmlhttp.open("POST","http://"+hostname+"/data/"+code+"?attr1="+d1+"&attr2="+d2+"&attr3="+d3+"&class="	+clas,true);
 						xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 						xmlhttp.send();
 					}else{
