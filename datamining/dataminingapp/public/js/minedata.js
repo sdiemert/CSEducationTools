@@ -12,7 +12,7 @@ function loadData(code){
     var xmlhttp = new XMLHttpRequest();
 
     if(code){
-        xmlhttp.open("GET","http://bigdata.actua.ca/data/"+code, true);
+        xmlhttp.open("GET",hostaddr+"/data/"+code, true);
         xmlhttp.send(); 
         xmlhttp.onreadystatechange = function () {
             var DONE = this.DONE || 4;

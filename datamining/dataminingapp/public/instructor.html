@@ -14,7 +14,7 @@
 
 				if(className){
 					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.open("POST","http://"+hostname+"/classifier/"+className);
+					xmlhttp.open("POST",hostaddr+"/classifier/"+className);
 					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					xmlhttp.send();
                     
