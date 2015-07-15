@@ -38,7 +38,7 @@ The circuit requires the following components:
 Below is a diagram of the circuit on a bread board:
 
 
-<img src="/Users/sdiemert/Dropbox/SV/binary_counter_bb.png" />
+<img src="./binary_counter_bb.png" />
 
 
 ### The Code
