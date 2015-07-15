@@ -1,8 +1,16 @@
+/**
+ * An arduino sketch for counting in binary using an array of four LEDs. 
+ */
 
-int COLUMN1 = 11;
-int COLUMN2 = 10; 
-int COLUMN4 = 9; 
-int COLUMN8 = 8; 
+
+//pin definitions for the LEDs
+
+int COLUMN1 = 0; //CHANGE ME
+int COLUMN2 = 0; //CHANGE ME 
+int COLUMN4 = 0; //CHANGE ME
+int COLUMN8 = 0; //CHANGE ME
+
+int BUTTON = A0; //CHANGE ME
 
 int digits[4] = {COLUMN1, COLUMN2, COLUMN4, COLUMN8};
 
@@ -12,19 +20,25 @@ void setup() {
   pinMode(COLUMN2, OUTPUT);
   pinMode(COLUMN4, OUTPUT);
   pinMode(COLUMN8, OUTPUT);
+  pinMode(BUTTON, INPUT); 
+
+  Serial.begin(9600);
 
 }
 
 void loop() {
 
   int y = 0; 
-
+  int buttonStatus = 0; 
+  
   while(1){
+
+    buttonStatus = getButton();
 
     showNumber(y);
     y = (y + 1) % 16; 
     
-    delay(500); 
+    delay(500);  //CHANGE ME TO COUNT FASTER, 1000 = 1 sec
   }
   
 
@@ -36,6 +50,8 @@ void loop() {
 void showNumber(int x){
 
   int i = 0; 
+
+  Serial.println(x);
   
   for(i = 0; i < 4; i++){
 
@@ -49,5 +65,15 @@ void showNumber(int x){
     
   }
   
+}
+int getButton(){
+
+  int val = analogRead(BUTTON);
+
+  if(val > 0){
+    return 1;  
+  }else{
+    return 0; 
+  }
 }
 
