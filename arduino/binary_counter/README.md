@@ -6,9 +6,9 @@ During this project we will use a circuit and an Arduino to make a binary counte
 
 Binary is a number system, instead of using 10 digits (0 to 9) binary uses only 2 digits (0 and 1). In our normal base 10 numbering system we can divide our numbers into columns, such as a 1's column, 10's column, 100's column etc... In binary we still use columns but, instead of going up by powers of 10, they increase by powers of 2. In binary we have a 1's column, 2's column, 4's column, 8's column, etc... 
 
-Here is a chart showing the first 16 binary numbers: 
+Here is a chart showing the first 16 binary numbers (poor formatting on GitHub is due to a bug in the GitHub markdown engine): 
 
- | Base 10 | Binary |
+ | Decimal | Binary |
  |----------|--------|
  | 0 | 0000 | 
  | 1 | 0001 |
@@ -43,7 +43,7 @@ Below is a diagram of the circuit on a bread board:
 
 ### The Code
 
-The code for the binary counter: 
+The code for the binary counter is available in the `binary_counter.ino` file, but it is copy and pasted here as well. 
 
 ```
 int COLUMN1 = 11;
