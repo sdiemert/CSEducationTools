@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="app.js"></script>
 
 		<script type="text/javascript">
 
@@ -13,9 +14,10 @@
 
 				if(className){
 					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.open("POST","http://127.0.0.1:3000/classifier/"+className);
+					xmlhttp.open("POST",hostaddr+"/classifier/"+className);
 					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					xmlhttp.send();
+                    
 					$("#success").show();
 					$("#danger").hide();
 				}else{
@@ -52,6 +54,8 @@
 					<p>
 						The code consist only of numbers and letters, no spaces or punctuation. 
 					</p>
+					<br>
+					<br>
 				</div>
 			</div>
 			<div class='row' style="">
@@ -61,7 +65,7 @@
 					<form id="input-form">
 						<div class="input-group input-group-lg">
 						  	<span class="input-group-addon" id="sizing-addon1">Code</span>
-							<input type="text" class="form-control" placeholder="myClassifier" aria-describedby="sizing-addon1" id="code">
+							<input type="text" class="form-control" onKeyPress="manageKeyPress()" placeholder="myClassifier" aria-describedby="sizing-addon1" id="code" autofocus="autofocus">
 							<span class="input-group-btn">
 						        <button class="btn btn-success" onclick="submitClassifier();" type="button">Go!</button>
 						    </span>
@@ -84,6 +88,17 @@
 				</div>
 				<div class='col-sm-3'>
 				</div>
+			</div>
+
+			<div class='row'>
+
+				<div class='col-sm-3'>
+				</div>
+				<div class="center-block col-sm-6" style="text-align:center;">
+					<a href='index.html'><button type="button" class="btn btn-primary btn-lg btn-block">Back to Start</button></a>
+				</div>
+				<div class='col-sm-3'></div>
+
 			</div>
 		</div>
 	</body>

@@ -12,16 +12,33 @@ function loadData(code){
     var xmlhttp = new XMLHttpRequest();
 
     if(code){
-        xmlhttp.open("GET","http://127.0.0.1:3000/data/"+code, true);
+        xmlhttp.open("GET",hostaddr+"/data/"+code, true);
         xmlhttp.send(); 
         xmlhttp.onreadystatechange = function () {
             var DONE = this.DONE || 4;
             if (this.readyState === DONE){
                 try{
-                    var data = JSON.parse(this.response); 
-                    if(data.length > 0){
-                        inputData = data[0]; 
-                        renderData(data[0]); 
+
+                    console.log("server responded with: "+ xmlhttp.status );
+
+                    if( xmlhttp.status === 200 ){
+                        var data = JSON.parse(this.response); 
+                        if( data.length > 0){
+
+                            inputData = data[0]; 
+                            $("#invalid-code-message").hide();
+                            renderData(data[0]);
+
+                        }else{
+
+                            $("#invalid-code-message").show();
+
+                        }
+
+                    }else{
+
+                        $("#invalid-code-message").show();
+
                     }
                 }catch(e){
                     console.log(e); 

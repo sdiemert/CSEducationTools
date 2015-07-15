@@ -1,5 +1,7 @@
 ## Data Mining Educational Tool
 
+**NOTE:** This part of the project has been broken out to its own repo, see: https://github.com/sdiemert/bigdata.actua.ca. 
+
 ### API 
 This web app contains a front end (html and css pages) and a back end in the form of a REST API. 
 

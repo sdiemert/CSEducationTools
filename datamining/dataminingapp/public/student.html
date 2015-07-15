@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="app.js"></script>
 		<script type="text/javascript">
 			var rowCount = 1; 
 			function addNewRow(){
@@ -20,12 +21,17 @@
 			}
 
 			function submit(){
+
+				var obj = [];
+
 				for(var i = 1; i <= rowCount; i++){
+
 					var d1 = $("#attr-"+i+"-1-data input").val();
 					var d2 = $("#attr-"+i+"-2-data input").val();
 					var d3 = $("#attr-"+i+"-3-data input").val();
 					var clas = $("#class-"+i+" input").val();
 					var code = $("#code").val(); 
+
 					console.log(d1); 
 					console.log(d2); 
 					console.log(d3); 
@@ -34,16 +40,55 @@
 
 
 					if(code && d1 && d2 && d3 && clas){
-						var xmlhttp = new XMLHttpRequest();
-						xmlhttp.open("POST","http://127.0.0.1:3000/data/"+code+"?attr1="+d1+"&attr2="+d2+"&attr3="+d3+"&class="	+clas,true);
-						xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-						xmlhttp.send();
+
+						obj.push({
+
+							code : code, 
+							attr1 : d1, 
+							attr2 : d2, 
+							attr3 : d3,
+							"class" : clas
+
+						});
+
 					}else{
 
 					}
 
-					window.location.replace("student_done.html"); 
 				}
+
+				try{
+					obj = JSON.stringify(obj);
+				}catch(e){
+
+					console.log("JSON PARSE ERROR: "+ e);
+					obj = "";
+
+				}
+
+				$.ajax({
+
+					type		: "POST",
+					url			: hostaddr+"/data/"+code,
+		            //contentType : "application/json",
+		            //dataType	: "json",
+		            data 		:  obj,
+		            success 	: function(data){
+
+		            	console.log("DATA FINISHED!")
+						window.location.replace("student_done.html"); 
+
+	                },
+
+	                error: function (xhr, status, error) {
+	                	console.log("Status:" + status);
+					    console.log('Error: ' + error.message);
+					    console.log(error.stack);
+						window.location.replace("student_done.html"); 
+					}
+
+				});
+
 			}
 
 			function setup(){
@@ -79,9 +124,9 @@
 
 						<table class='table'>
 							<tr>
-							   	<th><h4 id="attr-1">Item 1</h4></th>
-							   	<th><h4 id="attr-2">Item 2</h4></th>
-							   	<th><h4 id="attr-3">Item 3</h4></th>
+							   	<th><h4 id="attr-1">Attribute 1</h4></th>
+							   	<th><h4 id="attr-2">Attribute 2</h4></th>
+							   	<th><h4 id="attr-3">Attribute 3</h4></th>
 							   	<th><h4 id="class">Class</h4></th>
 							</tr>
 							<tbody id="input-table">

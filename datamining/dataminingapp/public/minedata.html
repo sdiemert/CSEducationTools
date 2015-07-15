@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="app.js"></script>
 
 		<!-- Script that does the data mining -->
 		<script src="js/minedata.js"></script>
@@ -139,7 +140,7 @@
 					<form id="input-form">
 						<div class="input-group input-group-lg">
 						  	<span class="input-group-addon" id="sizing-addon1">Code</span>
-							<input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" id="code">
+							<input type="text" autofocus="autofocus" class="form-control" placeholder="" aria-describedby="sizing-addon1" id="code">
 							<span class="input-group-btn">
 						        <button class="btn btn-success" onclick="getData();" type="button">Load Data</button>
 						    </span>
@@ -170,9 +171,9 @@
 					<!--<form id="">-->
 						<table class='table'>
 							<tr>
-							   	<th><h4 id="">Item 1</h4></th>
-							   	<th><h4 id="">Item 2</h4></th>
-							   	<th><h4 id="">Item 3</h4></th>
+							   	<th><h4 id="">Attribute 1</h4></th>
+							   	<th><h4 id="">Attribute 2</h4></th>
+							   	<th><h4 id="">Attribute 3</h4></th>
 							   	<th><h4 id="result-title">Predicted</h4></th>
 							   	<th><h4 id=""></h4></th>
 							</tr>
@@ -212,9 +213,9 @@
 
 					<table class='table'>
 						<tr>
-						   	<th><h4 id="attr-1">Item 1</h4></th>
-						   	<th><h4 id="attr-2">Item 2</h4></th>
-						   	<th><h4 id="attr-3">Item 3</h4></th>
+						   	<th><h4 id="attr-1">Attribute 1</h4></th>
+						   	<th><h4 id="attr-2">Attribute 2</h4></th>
+						   	<th><h4 id="attr-3">Attribute 3</h4></th>
 						   	<th><h4 id="class">Class</h4></th>
 						</tr>
 						<tbody id='data-table'></tbody> <!--this element gets populated by js/minedata.js -->
